@@ -17,15 +17,24 @@ import * as passportConfig from "./config/passport";
 const app = express();
 
 // Express configuration
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 3003);
 app.set("views", path.join(__dirname, "../views"));
-app.set("view engine", "pug");
+app.set("view engine", "ejs");
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(session({
+//   resave: true,
+//   saveUninitialized: true,
+//   secret: SESSION_SECRET,
+//   store: new MongoStore({
+//       url: mongoUrl,
+//       autoReconnect: true
+//   })
+// }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
+// app.use(flash());
 app.use(lusca.xframe("SAMEORIGIN"));
 app.use(lusca.xssProtection(true));
 app.use((req, res, next) => {
@@ -33,16 +42,16 @@ app.use((req, res, next) => {
     next();
 });
 app.use((req, res, next) => {
-    if (!req.user &&
-    req.path !== "/login" &&
-    req.path !== "/signup" &&
-    !req.path.match(/^\/auth/) &&
-    !req.path.match(/\./)) {
-        req.session.returnTo = req.path;
-    } else if (req.user &&
-    req.path == "/account") {
-        req.session.returnTo = req.path;
-    }
+    // if (!req.user && req.path !== "/login" && req.path !== "/signup" && !req.path.match(/^\/auth/) && !req.path.match(/\./)) {
+    //     console.log("-=1");
+    //     console.log(req.session);
+    //     req.session.returnTo = req.path;
+    // }
+    // else if (req.user && req.path == "/account") {
+    //     console.log("-=2");
+    //     console.log(req.session);
+    //     req.session.returnTo = req.path;
+    // }
     next();
 });
 

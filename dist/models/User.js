@@ -1,24 +1,14 @@
-
-import crypto from "crypto";
-
-type comparePasswordFunction = (candidatePassword: string, cb: (err: any, isMatch: any) => {}) => void;
-
-export interface AuthToken {
-    accessToken: string;
-    kind: string;
-}
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const userSchema = {
     email: { type: String, unique: true },
     password: String,
     passwordResetToken: String,
     passwordResetExpires: Date,
-
     facebook: String,
     twitter: String,
     google: String,
     tokens: Array,
-
     profile: {
         name: String,
         gender: String,
@@ -27,5 +17,5 @@ const userSchema = {
         picture: String
     }
 };
-
-export const User = userSchema;
+exports.User = userSchema;
+//# sourceMappingURL=User.js.map
