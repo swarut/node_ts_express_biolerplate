@@ -44,9 +44,12 @@
     "nodemailer": "^6.2.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "pg": "^7.12.1",
     "pm2": "^3.5.1",
+    "reflect-metadata": "^0.1.13",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
+    "typeorm": "^0.2.18",
     "winston": "^2.4.2"
   },
   "devDependencies": {
