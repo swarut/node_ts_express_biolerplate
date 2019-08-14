@@ -3,16 +3,16 @@ import compression from "compression";
 import session from "express-session";
 import bodyParser from "body-parser";
 import lusca from "lusca";
-import flash from "express-flash";
 import path from "path";
 import passport from "passport";
 import bluebird from "bluebird";
-
-import * as homeController from "./controllers/home";
-import * as userController from "./controllers/user";
-import * as apiController from "./controllers/api";
+import "reflect-metadata";
+import {createConnection} from "typeorm";
 
 import * as passportConfig from "./config/passport";
+
+import {IRoute, Routes} from "./routes"
+
 
 const app = express();
 
@@ -38,14 +38,23 @@ app.use(
     express.static(path.join(__dirname, "public"), { maxAge: 31557600000 })
 );
 
-app.get("/", homeController.index);
-app.get("/login", userController.getLogin);
-app.post("/login", userController.postLogin);
-app.get("/logout", userController.logout);
-app.get("/signup", userController.getSignup);
-app.post("/signup", userController.postSignup);
-app.get("/account", passportConfig.isAuthenticated, userController.getAccount);
-
-app.get("/api", apiController.getApi);
+Routes.forEach((route: IRoute) => {
+    let callback = (request: express.Request, response: express.Response, next: Function) => {
+        route.action(request, response);
+    };
+    switch (route.method) {
+        case "get":
+            app.get(route.path, callback);
+            break;
+        case "put":
+            app.put(route.path, callback);
+            break;
+        case "post":
+            app.post(route.path, callback);
+            break;
+        default:
+            break;
+    }
+});
 
 export default app;
