@@ -1,11 +1,11 @@
 
 import crypto from "crypto";
 
-type comparePasswordFunction = (candidatePassword: string, cb: (err: any, isMatch: any) => {}) => void;
+type comparePasswordFunction = (password: string, cb: (err: any, isMatch: any) => {}) => void;
 
 export interface AuthToken {
     accessToken: string;
-    kind: string;
+    provider: string;
 }
 
 const userSchema = {
@@ -14,16 +14,10 @@ const userSchema = {
     passwordResetToken: String,
     passwordResetExpires: Date,
 
-    facebook: String,
-    twitter: String,
-    google: String,
     tokens: Array,
 
     profile: {
         name: String,
-        gender: String,
-        location: String,
-        website: String,
         picture: String
     }
 };
