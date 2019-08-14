@@ -1,18 +1,15 @@
 import express from "express";
 import compression from "compression";
-import session from "express-session";
 import bodyParser from "body-parser";
 import lusca from "lusca";
 import path from "path";
 import passport from "passport";
-import bluebird from "bluebird";
 import "reflect-metadata";
 import {createConnection} from "typeorm";
 
 import * as passportConfig from "./config/passport";
 
 import {IRoute, Routes} from "./routes"
-
 
 const app = express();
 

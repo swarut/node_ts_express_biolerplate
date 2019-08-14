@@ -1,25 +1,23 @@
+import {Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn} from "typeorm";
 
-import crypto from "crypto";
+@Entity()
+export class User {
 
-type comparePasswordFunction = (password: string, cb: (err: any, isMatch: any) => {}) => void;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-export interface AuthToken {
-    accessToken: string;
-    provider: string;
+    @Column({length: 100})
+    name: string;
+
+    @Column("text")
+    image: string;
+
+    @Column("text")
+    token: string;
+
+    @CreateDateColumn()
+    createdDate: Date;
+
+    @UpdateDateColumn()
+    updatedDate: Date;
 }
-
-const userSchema = {
-    email: { type: String, unique: true },
-    password: String,
-    passwordResetToken: String,
-    passwordResetExpires: Date,
-
-    tokens: Array,
-
-    profile: {
-        name: String,
-        picture: String
-    }
-};
-
-export const User = userSchema;
