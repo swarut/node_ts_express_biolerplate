@@ -1,3 +1,25 @@
-body {
-  background: goldenrod;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .lbv-image {
+    margin-right: 20px;
+    width: 200px;
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+    img {
+      width: 80%;
+      position: absolute;
+      top: 7px;
+    }
+  }
+
+  h1 {
+    font-size: 200%;
+  }
+
 }
+
