@@ -1,4 +1,6 @@
 import errorHandler from "errorhandler";
+import {createConnection, Connection} from "typeorm";
+import {User} from "./models/user";
 
 import app from "./app";
 
@@ -7,16 +9,26 @@ import app from "./app";
  */
 app.use(errorHandler());
 
-/**
- * Start Express server.
- */
-const server = app.listen(app.get("port"), () => {
-    console.log(
-        "  App is running at http://localhost:%d in %s mode",
-        app.get("port"),
-        app.get("env")
-    );
-    console.log("  Press CTRL-C to stop\n");
+createConnection({
+    type: "postgres",
+    host: "localhost",
+    port: 5432,
+    username: "wsurapat",
+    password: "",
+    database: "boiler_dev",
+    entities: [
+        User
+    ],
+    synchronize: true
+}).then( async connection => {
+    const server = app.listen(app.get("port"), () => {
+        console.log(
+            "  App is running at http://localhost:%d in %s mode",
+            app.get("port"),
+            app.get("env")
+        );
+        console.log("  Press CTRL-C to stop\n");
+    });
 });
 
-export default server;
+// export default server;

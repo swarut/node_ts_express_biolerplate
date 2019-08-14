@@ -5,11 +5,11 @@ import lusca from "lusca";
 import path from "path";
 import passport from "passport";
 import "reflect-metadata";
-import {createConnection} from "typeorm";
 
 import * as passportConfig from "./config/passport";
 
 import {IRoute, Routes} from "./routes"
+
 
 const app = express();
 

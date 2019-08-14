@@ -9,11 +9,11 @@ export class User {
     @Column({length: 100})
     name: string;
 
-    @Column("text")
-    image: string;
+    // @Column("text")
+    // image: string;
 
-    @Column("text")
-    token: string;
+    // @Column("text")
+    // token: string;
 
     @CreateDateColumn()
     createdDate: Date;

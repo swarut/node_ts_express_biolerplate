@@ -1,11 +1,5 @@
 import async from "async";
-import crypto from "crypto";
-import nodemailer from "nodemailer";
-import passport from "passport";
-import { User, AuthToken } from "../models/User";
 import { Request, Response, NextFunction } from "express";
-import { IVerifyOptions } from "passport-local";
-import { check, sanitize, validationResult } from "express-validator";
 import "../config/passport";
 
 /**
