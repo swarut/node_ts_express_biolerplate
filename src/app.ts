@@ -8,7 +8,7 @@ import "reflect-metadata";
 
 import * as passportConfig from "./config/passport";
 
-import {IRoute, Routes} from "./routes"
+import {RouteInterface, Routes} from "./routes";
 
 
 const app = express();
@@ -35,7 +35,7 @@ app.use(
     express.static(path.join(__dirname, "public"), { maxAge: 31557600000 })
 );
 
-Routes.forEach((route: IRoute) => {
+Routes.forEach((route: RouteInterface) => {
     let callback = (request: express.Request, response: express.Response, next: Function) => {
         route.action(request, response);
     };

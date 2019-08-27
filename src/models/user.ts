@@ -1,23 +1,23 @@
 import {Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn} from "typeorm";
 
-@Entity()
+@Entity({name: "users"})
 export class User {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    public id: number;
 
     @Column({length: 100})
-    name: string;
+    public name: string;
 
-    // @Column("text")
-    // image: string;
+    @Column("text")
+    public image: string;
 
-    // @Column("text")
-    // token: string;
+    @Column("text")
+    public token: string;
 
     @CreateDateColumn()
-    createdDate: Date;
+    public created_date: Date;
 
     @UpdateDateColumn()
-    updatedDate: Date;
+    public updated_date: Date;
 }

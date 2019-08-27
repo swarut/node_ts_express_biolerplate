@@ -2,13 +2,13 @@ import * as homeController from "./controllers/home";
 import * as userController from "./controllers/user";
 import * as apiController from "./controllers/api";
 
-export interface IRoute {
-    path: string,
-    method: string,
-    action: Function
+export interface RouteInterface {
+    path: string;
+    method: string;
+    action: Function;
 }
 
-export const Routes: Array<IRoute> = [
+export const Routes: RouteInterface[] = [
     {
         path: "/",
         method: "get",
