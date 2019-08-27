@@ -49,5 +49,10 @@ export const Routes: RouteInterface[] = [
         method: "get",
         action: apiController.getApi
     },
+    {
+        path: "/api/sample",
+        method: "get",
+        action: apiController.getSample
+    }
 ];
 

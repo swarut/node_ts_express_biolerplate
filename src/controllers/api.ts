@@ -5,3 +5,8 @@ export const getApi = (req: Request, res: Response) => {
         title: "API Examples"
     });
 };
+
+export const getSample = (req: Request, res: Response) => {
+
+    res.send({title: "sample"});
+}
