@@ -1,4 +1,4 @@
-import {Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn} from "typeorm";
+import {Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, getManager} from "typeorm";
 
 @Entity({name: "users"})
 export class User {
@@ -20,4 +20,22 @@ export class User {
 
     @UpdateDateColumn()
     public updated_date: Date;
+
+    static createDummy(): User {
+        let user = new User();
+        user.name = "pon";
+        user.image = "image";
+        user.token = "token";
+
+        getManager()
+            .save(user)
+            .then(user => {
+                console.log("User has been saved. user id is", user.id);
+            })
+            .catch(error => {
+                console.log("error = ", error);
+            });
+        return user;
+    }
 }
+

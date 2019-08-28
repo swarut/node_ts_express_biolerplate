@@ -5,22 +5,9 @@ import {getManager} from "typeorm";
 import { userInfo } from "os";
 
 export const index = (req: Request, res: Response) => {
-
-    let user = new User();
-    user.name = "pon";
-    user.image = "image";
-    user.token = "token";
-
-    getManager()
-        .save(user)
-        .then(user => {
-            console.log("User has been saved. user id is", user.id);
-        })
-        .catch(error => {
-            console.log("error = ", error);
-        });
+    let user = User.createDummy();
 
     res.render("home", {
-        title: "LBV Express-TS boilerplate"
+        title: "LBV Express-TS boilerplate " + user.name
     });
 };
