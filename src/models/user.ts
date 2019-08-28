@@ -21,7 +21,7 @@ export class User {
     @UpdateDateColumn()
     public updated_date: Date;
 
-    static createDummy(): User {
+    public static createDummy(): User {
         let user = new User();
         user.name = "pon";
         user.image = "image";
