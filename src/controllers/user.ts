@@ -1,6 +1,6 @@
 import async from "async";
 import { Request, Response, NextFunction } from "express";
-import "../config/passport";
+import "../../config/passport";
 
 /**
  * GET /login

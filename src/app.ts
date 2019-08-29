@@ -6,13 +6,15 @@ import path from "path";
 import passport from "passport";
 import "reflect-metadata";
 import dotenv from "dotenv";
-import * as passportConfig from "./config/passport";
+import * as passportConfig from "../config/passport";
 
 import {RouteInterface, Routes} from "./routes";
 import { AdvancedConsoleLogger } from "typeorm";
 
 const app = express();
-dotenv.config({ path: ".env" });
+
+const configPath = "/config/." + (process.env.NODE_ENV || "development") + ".env";
+dotenv.config({path: configPath});
 
 // Express configuration
 app.set("port", process.env.PORT || 3003);
