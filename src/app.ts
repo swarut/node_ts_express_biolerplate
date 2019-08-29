@@ -14,7 +14,10 @@ import { AdvancedConsoleLogger } from "typeorm";
 const app = express();
 
 const configPath = "/config/." + (process.env.NODE_ENV || "development") + ".env";
-dotenv.config({path: configPath});
+const result = dotenv.config({path: configPath});
+if (result.error) {
+    throw result.error;
+}
 
 // Express configuration
 app.set("port", process.env.PORT || 3003);
