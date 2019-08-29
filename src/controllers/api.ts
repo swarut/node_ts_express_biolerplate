@@ -9,4 +9,4 @@ export const getApi = (req: Request, res: Response) => {
 export const getSample = (req: Request, res: Response) => {
 
     res.send({title: "sample"});
-}
+};
