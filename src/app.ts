@@ -13,7 +13,7 @@ import { AdvancedConsoleLogger } from "typeorm";
 
 const app = express();
 
-const configPath = "/config/." + (process.env.NODE_ENV || "development") + ".env";
+const configPath = "./config/." + (process.env.NODE_ENV || "development") + ".env";
 const result = dotenv.config({path: configPath});
 if (result.error) {
     throw result.error;
